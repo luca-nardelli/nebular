@@ -217,8 +217,11 @@ export class NbMenuInternalService {
 
   selectFromUrl(items: NbMenuItem[], tag: string, collapseOther: boolean = false) {
     const selectedItem = this.findItemByUrl(items);
+    // https://github.com/akveo/nebular/issues/1277#issuecomment-470136234
     if (selectedItem) {
       this.selectItem(selectedItem, items, collapseOther, tag);
+    } else {
+      this.resetSelection(items);
     }
   }
 
